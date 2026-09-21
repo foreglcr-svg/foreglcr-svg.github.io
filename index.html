@@ -62,14 +62,9 @@
             display: flex;
             flex-direction: column;
         }
-        @media (min-width: 768px) {
-            .section {
-                flex-direction: row;
-            }
-        }
         .section-header {
-            flex: 0 0 250px;
-            padding: 50px 0;
+            /* スマホでの無駄な余白を消すために flex: 0 0 250px; を削除し、paddingを調整しました */
+            padding: 40px 0 10px 0;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -77,9 +72,16 @@
         }
         .section-content {
             flex: 1;
-            padding: 0 0 50px 0;
+            padding: 0 0 40px 0;
         }
         @media (min-width: 768px) {
+            .section {
+                flex-direction: row;
+            }
+            .section-header {
+                flex: 0 0 250px; /* PCの時だけ見出しの幅を250pxにする */
+                padding: 50px 0;
+            }
             .section-content {
                 padding: 50px 0 50px 40px;
                 border-left: 1px solid var(--c-border-dark);
@@ -229,8 +231,8 @@
             
             <a href="https://foreg.base.shop/" target="_blank" class="project-item">
                 <div class="project-img-wrapper">
-                    <!-- ↓ ここにFOREGの画像ファイルを指定します -->
-                    <img src="https://github.com/foreglcr-svg/foreglcr-svg.github.io/blob/main/194126.png" alt="FOREG">
+                    <!-- URLではなく、ファイル名だけを指定（相対パス） -->
+                    <img src="194126.png" alt="FOREG">
                 </div>
                 <span class="project-tag">E-Commerce / Vintage</span>
                 <h3>FOREG <span>↗</span></h3>
@@ -239,8 +241,8 @@
             
             <a href="https://the-bo.dev" target="_blank" class="project-item">
                 <div class="project-img-wrapper">
-                    <!-- ↓ ここにTHE BŌの画像ファイルを指定します -->
-                    <img src="https://github.com/foreglcr-svg/foreglcr-svg.github.io/blob/main/194213-1.png" alt="THE BŌ">
+                    <!-- URLではなく、ファイル名だけを指定（相対パス） -->
+                    <img src="194213-1.png" alt="THE BŌ">
                 </div>
                 <span class="project-tag">Web App / AI</span>
                 <h3>THE BŌ <span>↗</span></h3>
