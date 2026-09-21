@@ -5,115 +5,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOREG - Portfolio</title>
     <style>
-        body { 
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f7f9fa; 
+        /* CSS Reset & Variables */
+        :root {
+            --bg-color: #0d0d0f; 
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --accent: #d4af37; 
         }
-        header { 
-            text-align: center; 
-            margin-bottom: 40px; 
-            padding: 40px 20px; 
-            background: #ffffff; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 { margin: 0; color: #2c3e50; letter-spacing: 1px; }
-        .subtitle { color: #7f8c8d; font-size: 1.1em; margin-top: 10px; }
-        section { 
-            background: #ffffff; 
-            padding: 30px; 
-            margin-bottom: 20px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
         }
-        h2 { 
-            border-bottom: 2px solid #f1f2f6; 
-            padding-bottom: 10px; 
-            color: #2c3e50; 
-            font-size: 1.4em;
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
         }
-        .project { margin-bottom: 25px; }
-        .project:last-child { margin-bottom: 0; }
-        .project h3 { margin-bottom: 5px; color: #34495e; }
-        .project p { margin-top: 0; color: #555; }
-        .links { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
-        .links a { 
-            display: inline-block; 
-            padding: 10px 20px; 
-            background: #2c3e50; 
-            color: #fff; 
-            text-decoration: none; 
-            border-radius: 6px; 
-            transition: background 0.3s;
-            font-weight: bold;
-            font-size: 0.9em;
+
+        /* Hero Section */
+        header {
+            padding: 20vh 0 15vh;
         }
-        .links a:hover { background: #34495e; }
-        .skills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
-        .skill-tag { 
-            background: #f1f2f6; 
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            font-size: 0.85em; 
-            color: #2f3640; 
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 30px;
+        }
+        .hero-title span {
+            color: var(--text-muted);
+            display: block;
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        .hero-subtitle strong {
+            color: var(--text-main);
             font-weight: 500;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .section-header {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        /* Projects Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        .project-card {
+            background: #161618;
+            padding: 50px 40px;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            background: #1c1c1f;
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .project-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+        .project-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .skill-item {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover {
+            border-color: var(--text-main);
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .footer-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
+            width: fit-content;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Entry Animation */
+        .fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>FOREG</h1>
-    <div class="subtitle">会社員 / ヴィンテージショップ運営 / Webアプリ開発</div>
-</header>
+<div class="container fade-in">
+    <header>
+        <h1 class="hero-title">
+            FOREG <span>Portfolio</span>
+        </h1>
+        <p class="hero-subtitle">
+            <strong>会社員 / ヴィンテージショップ運営 / Webアプリ開発</strong><br><br>
+            東京を拠点に活動しています。会社員として働きながら、ヴィンテージ古着のオンラインショップ運営や、APIを活用したWebアプリケーションの個人開発・自動化ツールの作成などを行っています。
+        </p>
+    </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>東京を拠点に活動しています。会社員として働きながら、ヴィンテージ古着のオンラインショップ運営や、APIを活用したWebアプリケーションの個人開発・自動化ツールの作成などを行っています。</p>
-</section>
+    <section>
+        <div class="section-header">01 // Projects</div>
+        <div class="project-grid">
+            <a href="https://foreg.base.shop/" target="_blank" class="project-card">
+                <span class="project-tag">E-Commerce / Vintage</span>
+                <h3>FOREG</h3>
+                <p>オンラインショップの運営。ヴィンテージアイテムの販売に加え、タグの歴史やディテール、ケア方法などについての発信も行っています。</p>
+            </a>
 
-<section>
-    <h2>Projects & Activities</h2>
-    
-    <div class="project">
-        <h3>ヴィンテージショップ「FOREG」</h3>
-        <p>オンラインショップの運営。ヴィンテージアイテムの販売に加え、タグの歴史やディテール、ケア方法などについての発信も行っています。</p>
-    </div>
-    
-    <div class="project">
-        <h3>THE BŌ (世界棒鑑定局)</h3>
-        <p>AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。</p>
-    </div>
-</section>
+            <a href="https://the-bo.dev" target="_blank" class="project-card">
+                <span class="project-tag">Web App / AI</span>
+                <h3>THE BŌ</h3>
+                <p>AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。</p>
+            </a>
+        </div>
+    </section>
 
-<section>
-    <h2>Tech Stack & Tools</h2>
-    <div class="skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Flask</span>
-        <span class="skill-tag">Gemini API</span>
-        <span class="skill-tag">GitHub</span>
-        <span class="skill-tag">Render</span>
-        <span class="skill-tag">Make</span>
-    </div>
-</section>
+    <section>
+        <div class="section-header">02 // Tech Stack</div>
+        <div class="skills-container">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">Flask</div>
+            <div class="skill-item">Gemini API</div>
+            <div class="skill-item">GitHub</div>
+            <div class="skill-item">Render</div>
+            <div class="skill-item">Make</div>
+        </div>
+    </section>
 
-<section>
-    <h2>Links</h2>
-    <div class="links">
-        <!-- href="#" の # の部分をご自身の実際のURLに書き換えてください -->
-        <a href="https://foreg.base.shop/" target="_blank">FOREG (BASE)</a>
-        <a href="https://the-bo.dev" target="_blank">THE BŌ</a>
-        <a href="https://note.com/foreg_lcr" target="_blank">note</a>
-        <a href="#" target="_blank">Threads</a>
-        <a href="https://foreglcr-svg.github.io" target="_blank">GitHub</a>
-    </div>
-</section>
+    <section style="margin-bottom: 100px;">
+        <div class="section-header">03 // Connect</div>
+        <div class="footer-links">
+            <a href="https://foreg.base.shop/" target="_blank">Shop (FOREG) ↗</a>
+            <a href="https://the-bo.dev" target="_blank">App (THE BŌ) ↗</a>
+            <a href="https://note.com/foreg_lcr" target="_blank">note ↗</a>
+            <a href="#" target="_blank">Threads ↗</a>
+            <a href="https://foreglcr-svg.github.io" target="_blank">GitHub ↗</a>
+        </div>
+    </section>
+</div>
 
 </body>
 </html>
