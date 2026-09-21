@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOREG - Portfolio</title>
     <style>
-        /* CSS Reset & Variables */
+        /* Reset & Variables */
         :root {
-            --bg-color: #0d0d0f; 
-            --text-main: #f5f5f7;
-            --text-muted: #86868b;
-            --accent: #d4af37; 
+            --c-bg: #fdfdfd;
+            --c-text: #111111;
+            --c-border: #e0e0e0;
+            --c-border-dark: #111111;
         }
         * {
             margin: 0;
@@ -18,145 +18,169 @@
             box-sizing: border-box;
         }
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--c-bg);
+            color: var(--c-text);
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
             line-height: 1.6;
         }
-        
+
         /* Layout */
-        .container {
-            max-width: 1200px;
+        .wrapper {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
         /* Hero Section */
-        header {
-            padding: 20vh 0 15vh;
+        .hero {
+            padding: 20vh 0 10vh;
+            border-bottom: 1px solid var(--c-border-dark);
         }
-        .hero-title {
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 700;
+            line-height: 1;
             margin-bottom: 30px;
+            letter-spacing: -0.04em;
         }
-        .hero-title span {
-            color: var(--text-muted);
-            display: block;
-        }
-        .hero-subtitle {
+        .hero p {
             font-size: clamp(1rem, 2vw, 1.1rem);
-            color: var(--text-muted);
             max-width: 700px;
-            font-weight: 300;
-            line-height: 1.8;
+            color: #444;
         }
-        .hero-subtitle strong {
-            color: var(--text-main);
-            font-weight: 500;
+        .hero strong {
+            color: var(--c-text);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
 
-        /* Sections */
-        section {
-            padding: 80px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Section Layout (Line Grid) */
+        .section {
+            border-bottom: 1px solid var(--c-border-dark);
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .section {
+                flex-direction: row;
+            }
         }
         .section-header {
+            flex: 0 0 250px;
+            padding: 50px 0;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-muted);
-            margin-bottom: 50px;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+        .section-content {
+            flex: 1;
+            padding: 0 0 50px 0;
+        }
+        @media (min-width: 768px) {
+            .section-content {
+                padding: 50px 0 50px 40px;
+                border-left: 1px solid var(--c-border-dark);
+            }
         }
 
-        /* Projects Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-        .project-card {
-            background: #161618;
-            padding: 50px 40px;
-            border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Projects List */
+        .project-item {
+            display: block;
             text-decoration: none;
             color: inherit;
-            display: block;
-            border: 1px solid rgba(255,255,255,0.02);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--c-border);
+            transition: opacity 0.3s;
         }
-        .project-card:hover {
-            transform: translateY(-8px);
-            background: #1c1c1f;
-            border-color: rgba(255,255,255,0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        .project-item:first-child {
+            padding-top: 0;
         }
-        .project-card h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
+        .project-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 25px;
+        .project-item:hover {
+            opacity: 0.6;
         }
         .project-tag {
+            display: inline-block;
+            border: 1px solid var(--c-text);
+            padding: 4px 12px;
+            border-radius: 20px;
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .project-item h3 {
+            font-size: 2rem;
             margin-bottom: 10px;
-            display: block;
+            letter-spacing: -0.02em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-item p {
+            color: #666;
+            font-size: 1rem;
         }
 
         /* Skills */
-        .skills-container {
+        .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
-        .skill-item {
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 12px 28px;
+        .skill-tag {
+            border: 1px solid var(--c-border-dark);
+            padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-        }
-        .skill-item:hover {
-            border-color: var(--text-main);
-            background: var(--text-main);
-            color: var(--bg-color);
         }
 
-        /* Footer Links */
-        .footer-links {
+        /* Links */
+        .link-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
         }
-        .footer-links a {
-            color: var(--text-main);
+        .link-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--c-border);
+            color: var(--c-text);
             text-decoration: none;
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            transition: color 0.3s ease;
-            width: fit-content;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .footer-links a:hover {
-            color: var(--accent);
+        .link-list a:last-child {
+            border-bottom: none;
+        }
+        .link-list a::after {
+            content: '↗';
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+        .link-list a:hover {
+            padding-left: 20px;
+            background-color: var(--c-text);
+            color: var(--c-bg);
+            margin: 0 -20px;
+            border-bottom-color: var(--c-text);
+        }
+        .link-list a:hover::after {
+            transform: translate(5px, -5px);
         }
 
-        /* Entry Animation */
+        /* Animation */
         .fade-in {
-            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
         @keyframes fadeIn {
             to { opacity: 1; transform: translateY(0); }
@@ -165,54 +189,56 @@
 </head>
 <body>
 
-<div class="container fade-in">
-    <header>
-        <h1 class="hero-title">
-            FOREG <span>Portfolio</span>
-        </h1>
-        <p class="hero-subtitle">
-            <strong>会社員 / ヴィンテージショップ運営 / Webアプリ開発</strong><br><br>
+<div class="wrapper fade-in">
+    <header class="hero">
+        <h1>FOREG</h1>
+        <p>
+            <strong>会社員 / ヴィンテージショップ運営 / Webアプリ開発</strong>
             東京を拠点に活動しています。会社員として働きながら、ヴィンテージ古着のオンラインショップ運営や、APIを活用したWebアプリケーションの個人開発・自動化ツールの作成などを行っています。
         </p>
     </header>
 
-    <section>
-        <div class="section-header">01 // Projects</div>
-        <div class="project-grid">
-            <a href="https://foreg.base.shop/" target="_blank" class="project-card">
+    <section class="section">
+        <div class="section-header">01 / Projects</div>
+        <div class="section-content">
+            <a href="https://foreg.base.shop/" target="_blank" class="project-item">
                 <span class="project-tag">E-Commerce / Vintage</span>
-                <h3>FOREG</h3>
+                <h3>FOREG <span>↗</span></h3>
                 <p>オンラインショップの運営。ヴィンテージアイテムの販売に加え、タグの歴史やディテール、ケア方法などについての発信も行っています。</p>
             </a>
-
-            <a href="https://the-bo.dev" target="_blank" class="project-card">
+            
+            <a href="https://the-bo.dev" target="_blank" class="project-item">
                 <span class="project-tag">Web App / AI</span>
-                <h3>THE BŌ</h3>
+                <h3>THE BŌ <span>↗</span></h3>
                 <p>AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。</p>
             </a>
         </div>
     </section>
 
-    <section>
-        <div class="section-header">02 // Tech Stack</div>
-        <div class="skills-container">
-            <div class="skill-item">Python</div>
-            <div class="skill-item">Flask</div>
-            <div class="skill-item">Gemini API</div>
-            <div class="skill-item">GitHub</div>
-            <div class="skill-item">Render</div>
-            <div class="skill-item">Make</div>
+    <section class="section">
+        <div class="section-header">02 / Tech Stack</div>
+        <div class="section-content">
+            <div class="skills">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Flask</span>
+                <span class="skill-tag">Gemini API</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Render</span>
+                <span class="skill-tag">Make</span>
+            </div>
         </div>
     </section>
 
-    <section style="margin-bottom: 100px;">
-        <div class="section-header">03 // Connect</div>
-        <div class="footer-links">
-            <a href="https://foreg.base.shop/" target="_blank">Shop (FOREG) ↗</a>
-            <a href="https://the-bo.dev" target="_blank">App (THE BŌ) ↗</a>
-            <a href="https://note.com/foreg_lcr" target="_blank">note ↗</a>
-            <a href="#" target="_blank">Threads ↗</a>
-            <a href="https://foreglcr-svg.github.io" target="_blank">GitHub ↗</a>
+    <section class="section" style="border-bottom: none; margin-bottom: 100px;">
+        <div class="section-header">03 / Links</div>
+        <div class="section-content">
+            <div class="link-list">
+                <a href="https://foreg.base.shop/" target="_blank">Shop (FOREG)</a>
+                <a href="https://the-bo.dev" target="_blank">App (THE BŌ)</a>
+                <a href="https://note.com/foreg_lcr" target="_blank">note</a>
+                <a href="#" target="_blank">Threads</a>
+                <a href="https://foreglcr-svg.github.io" target="_blank">GitHub</a>
+            </div>
         </div>
     </section>
 </div>
