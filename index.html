@@ -157,6 +157,20 @@ a{color:inherit;text-decoration:none}
 .foot__txt{flex:1;min-width:240px;font-family:var(--jp);font-size:12px;line-height:2;color:#9C9C96}
 .foot__meta{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#9C9C96;line-height:2.2;text-align:right}
 
+
+/* ---------- BACK TO TOP ---------- */
+.totop{
+  position:fixed;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,34px);z-index:60;
+  width:clamp(58px,6.5vw,82px);color:var(--ink);
+  opacity:0;transform:translateY(18px);pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;
+}
+.totop.is-on{opacity:1;transform:none;pointer-events:auto}
+.totop svg{display:block;width:100%;height:auto;animation:bob 5s ease-in-out infinite;transform-origin:50% 90%}
+.totop:hover svg,.totop:focus-visible svg{animation-duration:2.2s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+:root{--balloon:#C8102E}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:900px){
   .hero__grid{grid-template-columns:1fr}
@@ -186,10 +200,11 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
+<span id="top" aria-hidden="true"></span>
 
 <header class="nav">
   <div class="wrap nav__in">
-    <span class="mark">FOREG</span>
+    <a class="mark" href="#top" aria-label="FOREG — top">FOREG</a>
     <nav class="nav__links" aria-label="Sections">
       <a href="#projects">01 <span data-i18n="nav.projects">Projects</span></a>
       <a href="#stack">02 <span data-i18n="nav.stack">Stack</span></a>
@@ -332,10 +347,13 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
+<a class="totop" href="#top" aria-label="Back to top" data-i18n-aria="a11y.top"><svg viewBox="0 0 100 150" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><g><path d="M 86.4 48.0 Q 87.0 53.5 84.3 61.7 Q 82.8 68.2 78.4 73.7 Q 75.7 78.5 69.4 82.6 Q 65.3 87.2 58.3 87.4 Q 51.0 85.4 46.5 87.4 Q 42.5 87.2 35.4 82.6 Q 29.2 76.0 26.4 73.7 Q 25.1 65.6 20.5 61.7 Q 18.9 56.2 18.4 48.0 Q 21.0 39.8 20.5 34.3 Q 23.9 30.2 26.4 22.3 Q 30.9 18.0 35.4 13.4 Q 41.9 11.0 46.5 8.6 Q 52.4 8.8 58.3 8.6 Q 63.1 13.4 69.4 13.4 Q 72.4 20.2 78.4 22.3 Q 80.7 29.4 84.3 34.3 Q 84.1 40.5 86.4 48.0 Z" fill="var(--balloon, #C8102E)" opacity=".55"/></g><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M 85.2 44.7 Q 84.5 50.5 82.4 59.3 Q 79.5 63.9 76.7 71.5 Q 73.9 77.8 68.0 80.7 Q 62.2 81.3 55.6 84.6 Q 51.4 84.7 44.3 86.2 Q 40.2 82.2 32.9 81.6 Q 28.4 76.0 25.0 72.0 Q 22.4 65.2 18.5 59.2 Q 17.6 53.4 15.1 45.4 Q 15.1 37.6 17.3 32.8 Q 19.4 27.3 25.0 21.2 Q 28.5 17.3 33.1 12.0 Q 37.2 10.4 44.5 7.5 Q 50.3 6.8 56.1 5.7 Q 60.8 6.4 66.0 10.5 Q 71.0 14.9 75.3 21.3 Q 77.5 24.9 82.3 31.4 Q 83.8 42.6 84.4 50.2" stroke-width="1.72" opacity="1.00"/><path d="M 83.9 43.7 Q 82.0 51.4 82.4 60.3 Q 78.1 65.2 77.0 72.6 Q 74.0 78.6 67.9 81.5 Q 62.9 81.9 55.4 85.5 Q 48.6 86.3 43.3 85.5 Q 38.1 83.7 32.1 80.7 Q 26.2 74.9 23.4 71.5 Q 20.9 63.5 17.2 58.8 Q 18.9 51.3 17.0 46.9 Q 18.0 40.1 17.0 32.8 Q 21.1 27.4 23.7 19.6 Q 30.0 14.6 34.1 10.8 Q 41.1 6.7 45.1 5.7 Q 50.2 7.1 56.1 6.8 Q 63.3 9.3 67.7 10.9 Q 73.3 14.9 75.6 21.0 Q 80.1 28.1 81.4 32.7 Q 82.3 40.3 84.3 48.5" stroke-width="1.71" opacity="0.94"/><path d="M 39.7 23.6 Q 33.6 32.6 31.2 41.0 Q 33.3 48.3 35.1 54.2" stroke-width="1.34" opacity="0.64"/><path d="M 42.8 86.5 Q 45.7 83.7 49.9 78.4 Q 53.4 81.4 56.7 86.3 Q 53.5 87.4 49.9 90.8 Q 46.9 87.3 42.2 84.9" stroke-width="1.31" opacity="0.64"/><path d="M 43.7 88.5 Q 47.5 83.9 49.6 77.5 Q 52.0 80.5 56.3 85.2 Q 54.7 86.0 50.8 89.1 Q 46.4 87.0 41.7 85.2" stroke-width="1.49" opacity="0.90"/><path d="M 50.6 89.0 Q 53.3 98.5 57.3 104.2 Q 49.9 112.2 44.6 117.1 Q 50.1 122.2 53.1 131.4 Q 51.4 137.4 47.4 145.3" stroke-width="1.47" opacity="0.76"/><path d="M 50.1 87.8 Q 52.1 96.1 57.5 104.1 Q 51.6 111.2 45.0 117.9 Q 46.9 123.6 53.4 131.2 Q 49.1 137.5 46.4 147.0" stroke-width="1.33" opacity="0.61"/></g></svg></a>
+
 <script>
 (function () {
   var DICT = {
     en: {
+      "a11y.top": "Back to top",
       "doc.title": "FOREG - Portfolio",
       "doc.desc": "FOREG — vintage clothing and AI web apps, made by one person in Tokyo. Winner of the AI Festival Award at note's #AIで遊ぼう contest.",
       "nav.projects": "Projects", "nav.stack": "Stack", "nav.links": "Links", "nav.shop": "Shop",
@@ -362,6 +380,7 @@ a{color:inherit;text-decoration:none}
       "foot.txt": "Employee / vintage shop owner / web app developer.<br>Based in Tokyo, Japan."
     },
     ja: {
+      "a11y.top": "ページの先頭へ戻る",
       "doc.title": "FOREG - ポートフォリオ",
       "doc.desc": "FOREG — 会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップとAPIを活用した個人開発を行っています。note ×AIフェスティバル「#AIで遊ぼう」投稿コンテストでAIフェスティバル賞を受賞。",
       "nav.projects": "プロジェクト", "nav.stack": "技術スタック", "nav.links": "リンク", "nav.shop": "ショップ",
@@ -388,6 +407,7 @@ a{color:inherit;text-decoration:none}
       "foot.txt": "会社員 / ヴィンテージショップ運営 / Webアプリ開発<br>東京を拠点に活動しています。"
     },
     es: {
+      "a11y.top": "Volver arriba",
       "doc.title": "FOREG - Portafolio",
       "doc.desc": "FOREG — ropa vintage y apps web con IA, hechas por una sola persona en Tokio. Premio AI Festival en el concurso #AIで遊ぼう de note.",
       "nav.projects": "Proyectos", "nav.stack": "Stack", "nav.links": "Enlaces", "nav.shop": "Tienda",
@@ -414,6 +434,7 @@ a{color:inherit;text-decoration:none}
       "foot.txt": "Empleado / tienda vintage / desarrollo de apps web.<br>Con base en Tokio, Japón."
     },
     ko: {
+      "a11y.top": "맨 위로 돌아가기",
       "doc.title": "FOREG - 포트폴리오",
       "doc.desc": "FOREG — 도쿄에서 혼자 만드는 빈티지 의류와 AI 웹 앱. note 「#AIで遊ぼう」 공모전 AI 페스티벌상 수상.",
       "nav.projects": "프로젝트", "nav.stack": "기술 스택", "nav.links": "링크", "nav.shop": "숍",
@@ -453,6 +474,11 @@ a{color:inherit;text-decoration:none}
       var mk = metas[m].getAttribute("data-i18n-meta");
       if (d[mk]) { metas[m].setAttribute("content", d[mk]); }
     }
+    var arias = document.querySelectorAll("[data-i18n-aria]");
+    for (var q = 0; q < arias.length; q++) {
+      var ak = arias[q].getAttribute("data-i18n-aria");
+      if (d[ak]) { arias[q].setAttribute("aria-label", d[ak]); }
+    }
     var nodes = document.querySelectorAll("[data-i18n]");
     for (var i = 0; i < nodes.length; i++) {
       var k = nodes[i].getAttribute("data-i18n");
@@ -474,12 +500,24 @@ a{color:inherit;text-decoration:none}
   try { saved = localStorage.getItem(STORE_KEY); } catch (e) {}
   apply(DICT[saved] ? saved : DEFAULT);
 
+
+  var toTop = document.querySelector(".totop");
+  if (toTop) {
+    var onScroll = function () {
+      if (window.scrollY > 520) { toTop.classList.add("is-on"); }
+      else { toTop.classList.remove("is-on"); }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
   document.querySelector(".lang").addEventListener("click", function (ev) {
     var t = ev.target.closest("button[data-lang]");
     if (t) { apply(t.getAttribute("data-lang")); }
   });
 })();
 </script>
+
 
 </body>
 </html>
