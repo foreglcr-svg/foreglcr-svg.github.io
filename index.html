@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOREG - Portfolio</title>
-<meta name="description" content="FOREG — 会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップとAPIを活用した個人開発を行っています。">
+<meta name="description" content="FOREG — 会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップとAPIを活用した個人開発を行っています。note ×AIフェスティバル「#AIで遊ぼう」投稿コンテストでAIフェスティバル賞を受賞。">
 <meta property="og:title" content="FOREG - Portfolio">
-<meta property="og:description" content="Vintage clothing × AI web apps. Tokyo / Japan.">
+<meta property="og:description" content="Vintage clothing × AI web apps. Tokyo / Japan. 「#AIで遊ぼう」投稿コンテスト AIフェスティバル賞受賞。">
 <meta property="og:type" content="website">
 <meta property="og:image" content="194126.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,6 +112,27 @@ a{color:inherit;text-decoration:none}
 }
 .hero__tag{align-self:flex-start;transform:rotate(-2deg);font-family:var(--jp);font-weight:700;font-size:14px;border-bottom:3px solid var(--red);padding-bottom:4px}
 
+/* ---------- AWARD ---------- */
+.award{background:var(--acid);border-top:var(--bd)}
+.award__in{display:flex;align-items:center;gap:clamp(16px,2.6vw,32px);padding-block:clamp(20px,2.6vw,26px)}
+.award__star{font-family:var(--display);font-size:clamp(34px,5vw,56px);line-height:1;flex:none}
+.award__eyebrow{font-family:var(--jp);font-weight:700;font-size:clamp(11px,1.1vw,13px);letter-spacing:.08em}
+.award__title{font-family:var(--display);font-size:clamp(20px,3.2vw,34px);letter-spacing:-.01em;line-height:1.1;font-weight:400;margin-top:4px}
+.award__jp{flex:1;font-family:var(--jp);font-size:clamp(12px,1.1vw,14px);line-height:1.9}
+.award__link{
+  flex:none;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;
+  background:var(--ink);color:var(--paper);border:var(--bd);
+  font-family:var(--display);font-size:14px;letter-spacing:.06em;
+  box-shadow:5px 5px 0 var(--paper);
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.award__link:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--paper)}
+.chip-award{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:var(--acid);border:2px solid var(--ink);
+  padding:6px 12px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;
+}
+
 /* ---------- TICKER ---------- */
 .ticker{
   background:var(--ink);color:var(--acid);
@@ -209,6 +230,9 @@ a{color:inherit;text-decoration:none}
 }
 @media (max-width:860px){
   .nav__links{display:none}
+  .award__in{flex-wrap:wrap}
+  .award__jp{flex-basis:100%;order:3}
+  .award__link{order:2}
   .cards{grid-template-columns:1fr}
   .card{box-shadow:8px 8px 0 var(--ink)}
   .links__url{display:none}
@@ -270,6 +294,18 @@ a{color:inherit;text-decoration:none}
     </div>
   </section>
 
+  <section class="award" aria-labelledby="award-h">
+    <div class="wrap award__in">
+      <span class="award__star" aria-hidden="true">★</span>
+      <div>
+        <p class="award__eyebrow">note ×AIフェスティバル「#AIで遊ぼう」投稿コンテスト</p>
+        <h2 class="award__title" id="award-h">AI FESTIVAL AWARD</h2>
+      </div>
+      <p class="award__jp">応募28,706件のうち、受賞2作品のひとつに<br>「THE BŌ」が選出されました。（2026年9月発表）</p>
+      <a class="award__link" href="https://note.com/info/n/n7dfd7537c462" target="_blank" rel="noopener">SEE ANNOUNCEMENT ↗</a>
+    </div>
+  </section>
+
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
       <span>VINTAGE FOREG ★ AI THE BŌ ★ TOKYO ★ PYTHON ★ GEMINI API ★ VINTAGE FOREG ★ AI THE BŌ ★ TOKYO ★ PYTHON ★ GEMINI API ★</span>
@@ -312,7 +348,7 @@ a{color:inherit;text-decoration:none}
           <div class="card__body">
             <h3>THE BŌ<br>WEB APP</h3>
             <p>AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。</p>
-            <div class="tags"><span class="tag">GEMINI API</span><span class="tag">FLASK</span><span class="tag">RENDER</span></div>
+            <div class="tags"><span class="chip-award">★ AI FESTIVAL AWARD</span><span class="tag">GEMINI API</span><span class="tag">FLASK</span><span class="tag">RENDER</span></div>
             <span class="card__go"><span>OPEN APP</span><span>↗</span></span>
           </div>
         </a>
@@ -356,8 +392,9 @@ a{color:inherit;text-decoration:none}
         <a href="https://foreg.base.shop/" target="_blank" rel="noopener"><span class="links__name">SHOP (FOREG)</span><span class="links__url">foreg.base.shop</span><span class="links__arrow">↗</span></a>
         <a href="https://the-bo.dev" target="_blank" rel="noopener"><span class="links__name">APP (THE BŌ)</span><span class="links__url">the-bo.dev</span><span class="links__arrow">↗</span></a>
         <a href="https://note.com/foreg_lcr" target="_blank" rel="noopener"><span class="links__name">NOTE</span><span class="links__url">note.com/foreg_lcr</span><span class="links__arrow">↗</span></a>
+        <a href="https://note.com/info/n/n7dfd7537c462" target="_blank" rel="noopener"><span class="links__name">AWARD (note)</span><span class="links__url">「#AIで遊ぼう」受賞発表</span><span class="links__arrow">↗</span></a>
         <!-- TODO: Threads の URL を入れる -->
-        <a href="https://www.threads.com/@foreg.lcr?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener"><span class="links__name">THREADS</span><span class="links__url">threads.com/@foreg.lcr</span><span class="links__arrow">↗</span></a>
+        <a href="#" target="_blank" rel="noopener"><span class="links__name">THREADS</span><span class="links__url">[YOUR THREADS URL]</span><span class="links__arrow">↗</span></a>
         <a href="https://github.com/foreglcr-svg" target="_blank" rel="noopener"><span class="links__name">GITHUB</span><span class="links__url">github.com/foreglcr-svg</span><span class="links__arrow">↗</span></a>
       </div>
     </div>
