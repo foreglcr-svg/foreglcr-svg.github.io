@@ -1,252 +1,167 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOREG - Portfolio</title>
-<meta name="description" content="FOREG — 会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップとAPIを活用した個人開発を行っています。note ×AIフェスティバル「#AIで遊ぼう」投稿コンテストでAIフェスティバル賞を受賞。">
+<meta name="description" data-i18n-meta="doc.desc" content="FOREG — vintage clothing and AI web apps, made by one person in Tokyo. Winner of the AI Festival Award at note's #AIで遊ぼう contest.">
 <meta property="og:title" content="FOREG - Portfolio">
-<meta property="og:description" content="Vintage clothing × AI web apps. Tokyo / Japan. 「#AIで遊ぼう」投稿コンテスト AIフェスティバル賞受賞。">
+<meta property="og:description" content="Vintage clothing × AI web apps. Tokyo / Japan. AI Festival Award, note #AIで遊ぼう contest.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="194126.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#16130F;
-  --paper:#F4F1E6;
-  --red:#FF3D2E;
-  --cyan:#14B3C4;
-  --acid:#FFC93C;
-  --muted:#5E574D;
-  --body:#3A342C;
-  --display:'Archivo Black',system-ui,sans-serif;
-  --sans:'Archivo','Zen Kaku Gothic New',system-ui,sans-serif;
-  --jp:'Zen Kaku Gothic New',system-ui,sans-serif;
+  --ink:#0B0B0B;
+  --paper:#FFFFFF;
+  --off:#F2F2EF;
+  --line:#D6D6D1;
+  --muted:#6E6E68;
+  --accent:#C8102E;
+  --sans:'Archivo','Zen Kaku Gothic New','Noto Sans KR',system-ui,sans-serif;
+  --jp:'Zen Kaku Gothic New','Noto Sans KR',system-ui,sans-serif;
   --mono:'Space Mono',ui-monospace,monospace;
-  --bd:3px solid var(--ink);
-  --pad:clamp(20px,4vw,56px);
+  --pad:clamp(20px,5vw,64px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--paper);color:var(--ink);
-  font-family:var(--sans);line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1440px;margin:0 auto;padding-inline:var(--pad)}
-.mono{font-family:var(--mono)}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:var(--pad)}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+:root[lang="ja"] .lbl,:root[lang="ko"] .lbl{font-family:var(--jp);letter-spacing:.14em;font-weight:700}
 
 /* ---------- NAV ---------- */
-.nav{
-  position:sticky;top:0;z-index:50;
-  background:var(--paper);border-bottom:var(--bd);
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.nav__in{display:flex;align-items:center;gap:clamp(12px,3vw,48px);height:64px}
+.mark{display:inline-flex;align-items:center;justify-content:center;height:26px;padding:0 10px;background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;letter-spacing:.16em;flex:none}
+.nav__links{display:flex;gap:clamp(16px,2.4vw,32px);flex:1}
+.nav__links a{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);padding-block:6px}
+:root[lang="ja"] .nav__links a,:root[lang="ko"] .nav__links a{font-family:var(--jp);letter-spacing:.1em}
+.nav__links a:hover{color:var(--ink)}
+.lang{display:flex;align-items:center;gap:2px;margin-left:auto;flex:none}
+.lang button{
+  appearance:none;background:none;border:0;cursor:pointer;
+  min-height:44px;padding:0 8px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);
 }
-.nav__in{display:flex;align-items:center;gap:clamp(12px,2vw,40px);height:72px}
-.nav__logo{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em}
-.nav__dot{width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid var(--ink);flex:none}
-.nav__links{display:flex;gap:28px;flex:1;font-family:var(--mono);font-size:12px;letter-spacing:.14em}
-.nav__links a:hover{color:var(--red)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:44px;padding:0 22px;border:var(--bd);background:var(--red);color:var(--ink);
-  font-family:var(--display);font-size:13px;letter-spacing:.08em;
-  box-shadow:4px 4px 0 var(--ink);
-  transition:transform .12s ease,box-shadow .12s ease;
-}
-.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
-.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.lang button:hover{color:var(--ink)}
+.lang button[aria-pressed="true"]{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.lang__sep{color:var(--line);font-family:var(--mono);font-size:10px}
+.nav__cta{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:2px;flex:none;margin-left:clamp(8px,1.6vw,20px)}
+:root[lang="ja"] .nav__cta,:root[lang="ko"] .nav__cta{font-family:var(--jp);letter-spacing:.1em}
+.nav__cta:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------- HERO ---------- */
-.hero{
-  position:relative;overflow:hidden;
-  padding-block:clamp(32px,5vw,64px) clamp(40px,6vw,72px);
-  background-image:radial-gradient(var(--ink) 1.3px,transparent 1.4px);
-  background-size:14px 14px;
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(244,241,230,.88) 0%,rgba(244,241,230,.99) 62%);
-}
-.hero__in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:40px;align-items:start}
-.eyebrow{font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);letter-spacing:.22em}
-.hero h1{
-  font-family:var(--display);
-  font-size:clamp(88px,16vw,236px);line-height:.82;letter-spacing:-.045em;
-  color:var(--paper);margin:.12em 0 0;
-  text-shadow:
-    .045em .045em 0 var(--red), .045em .045em 0 var(--ink),
-    -2px 0 0 var(--ink), 2px 0 0 var(--ink), 0 -2px 0 var(--ink), 0 2px 0 var(--ink);
-}
-.hero__sub{display:flex;align-items:center;gap:16px;margin-top:clamp(18px,2.4vw,26px)}
-.hero__rule{height:8px;width:120px;flex:none;background:repeating-linear-gradient(90deg,var(--ink) 0 12px,transparent 12px 20px)}
-.hero__sub h2{font-family:var(--display);font-size:clamp(19px,3vw,34px);letter-spacing:-.01em;line-height:1.15;font-weight:400}
-.hero p{font-family:var(--jp);font-size:clamp(14px,1.2vw,16px);line-height:2.05;color:var(--body);max-width:620px;margin-top:18px}
-.cta{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px}
-.cta .btn{min-height:64px;padding:0 34px;font-size:clamp(15px,1.4vw,18px);box-shadow:8px 8px 0 var(--ink)}
-.cta .btn:hover{box-shadow:4px 4px 0 var(--ink)}
-.cta .btn--cyan{background:var(--cyan)}
-.hero__side{display:flex;flex-direction:column;align-items:flex-end;gap:26px;padding-top:14px}
-.sticker{
-  background:var(--acid);border:var(--bd);box-shadow:6px 6px 0 var(--ink);
-  padding:14px 24px;font-family:var(--display);font-size:20px;letter-spacing:.02em;
-}
-.sticker--a{transform:rotate(6deg)}
-.sticker--b{transform:rotate(-5deg);background:var(--cyan)}
-.checker{
-  transform:rotate(3deg);width:250px;height:250px;flex:none;
-  border:var(--bd);box-shadow:8px 8px 0 var(--ink);
-  background-color:var(--paper);
-  background-image:repeating-conic-gradient(var(--ink) 0% 25%,var(--paper) 0% 50%);
-  background-size:50px 50px;
-  display:grid;place-items:center;
-}
-.checker span{
-  background:var(--paper);border:var(--bd);padding:12px 18px;
-  font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.16em;
-  text-align:center;line-height:1.7;
-}
-.hero__tag{align-self:flex-start;transform:rotate(-2deg);font-family:var(--jp);font-weight:700;font-size:14px;border-bottom:3px solid var(--red);padding-bottom:4px}
+.hero{padding-block:clamp(56px,10vw,132px) clamp(40px,6vw,80px)}
+.hero__meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.hero h1{font-size:clamp(64px,15vw,196px);font-weight:700;line-height:.88;letter-spacing:-.05em}
+.hero__dot{display:inline-block;width:.1em;height:.1em;background:var(--accent);vertical-align:baseline;margin-left:.06em}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:clamp(28px,4vw,48px);padding-top:clamp(20px,3vw,32px);border-top:1px solid var(--line)}
+.hero h2{font-size:clamp(16px,1.9vw,22px);font-weight:600;letter-spacing:-.01em;line-height:1.5}
+.hero p{font-family:var(--jp);font-size:14px;line-height:2.1;color:var(--muted);margin-top:16px;max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border:1px solid var(--ink);font-size:12px;letter-spacing:.2em;text-transform:uppercase;transition:background .18s ease,color .18s ease}
+:root[lang="ja"] .btn,:root[lang="ko"] .btn{letter-spacing:.06em;font-weight:500}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn--solid{background:var(--ink);color:var(--paper)}
+.btn--solid:hover{background:var(--accent);border-color:var(--accent)}
+.spec{display:flex;flex-direction:column;gap:0;align-self:start;border-top:1px solid var(--line)}
+.spec__row{display:flex;gap:16px;padding-block:12px;border-bottom:1px solid var(--line)}
+.spec__k{width:104px;flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+:root[lang="ja"] .spec__k,:root[lang="ko"] .spec__k{font-family:var(--jp);letter-spacing:.08em}
+.spec__v{font-family:var(--jp);font-size:13px;line-height:1.9}
 
 /* ---------- AWARD ---------- */
-.award{background:var(--acid);border-top:var(--bd)}
-.award__in{display:flex;align-items:center;gap:clamp(16px,2.6vw,32px);padding-block:clamp(20px,2.6vw,26px)}
-.award__star{font-family:var(--display);font-size:clamp(34px,5vw,56px);line-height:1;flex:none}
-.award__eyebrow{font-family:var(--jp);font-weight:700;font-size:clamp(11px,1.1vw,13px);letter-spacing:.08em}
-.award__title{font-family:var(--display);font-size:clamp(20px,3.2vw,34px);letter-spacing:-.01em;line-height:1.1;font-weight:400;margin-top:4px}
-.award__jp{flex:1;font-family:var(--jp);font-size:clamp(12px,1.1vw,14px);line-height:1.9}
-.award__link{
-  flex:none;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;
-  background:var(--ink);color:var(--paper);border:var(--bd);
-  font-family:var(--display);font-size:14px;letter-spacing:.06em;
-  box-shadow:5px 5px 0 var(--paper);
-  transition:transform .12s ease,box-shadow .12s ease;
-}
-.award__link:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--paper)}
-.chip-award{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--ink);color:var(--acid);border:2px solid var(--ink);
-  padding:6px 12px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;
-}
+.award{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.award__in{display:flex;align-items:center;gap:clamp(20px,4vw,56px);padding-block:clamp(24px,3.4vw,36px)}
+.award__mark{width:64px;height:64px;flex:none;border:1px solid var(--ink);display:grid;place-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.5;text-align:center}
+.award__mark span{color:var(--accent)}
+.award__title{font-size:clamp(18px,2.4vw,26px);font-weight:600;letter-spacing:-.01em;margin-top:8px}
+.award__jp{flex:1;font-family:var(--jp);font-size:13px;line-height:2;color:var(--muted)}
+.award__link{flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+:root[lang="ja"] .award__link,:root[lang="ko"] .award__link{font-family:var(--jp);letter-spacing:.08em}
+.award__link:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------- TICKER ---------- */
-.ticker{
-  background:var(--ink);color:var(--acid);
-  border-top:var(--bd);border-bottom:var(--bd);
-  overflow:hidden;display:flex;align-items:center;height:clamp(56px,7vw,72px);
-}
-.ticker__track{display:flex;flex:none;width:max-content;animation:slide 32s linear infinite}
-.ticker__track span{
-  font-family:var(--display);font-size:clamp(16px,2vw,22px);letter-spacing:.1em;
-  white-space:nowrap;padding-right:1.2em;
-}
+.ticker{background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:center;height:56px}
+.ticker__track{display:flex;flex:none;width:max-content;animation:slide 48s linear infinite}
+.ticker__track span{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;white-space:nowrap;padding-right:2.5em}
+:root[lang="ja"] .ticker__track span,:root[lang="ko"] .ticker__track span{font-family:var(--jp);letter-spacing:.18em;font-size:12px}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-/* ---------- SECTIONS ---------- */
-.sec{padding-block:clamp(40px,6vw,64px)}
-.sec__head{display:flex;align-items:flex-end;gap:clamp(14px,2vw,24px);margin-bottom:clamp(24px,3vw,36px)}
-.sec__num{font-family:var(--display);font-size:clamp(52px,8vw,96px);line-height:.8;letter-spacing:-.04em;color:var(--red)}
-.sec__title{font-family:var(--display);font-size:clamp(24px,4vw,44px);letter-spacing:-.01em;line-height:1;font-weight:400}
-.sec__jp{font-family:var(--jp);font-size:clamp(11px,1.1vw,14px);color:var(--muted);letter-spacing:.1em;margin-top:6px}
-.sec__slash{flex:1;height:10px;margin-bottom:16px;background:repeating-linear-gradient(45deg,var(--ink) 0 8px,transparent 8px 16px)}
+/* ---------- SECTION ---------- */
+.sec{padding-block:clamp(48px,7vw,104px)}
+.sec__head{display:flex;align-items:baseline;gap:20px;padding-bottom:16px;border-bottom:1px solid var(--ink);margin-bottom:clamp(28px,4vw,48px)}
+.sec__no{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--accent)}
+.sec__title{font-size:clamp(20px,2.6vw,28px);font-weight:600;letter-spacing:-.01em;flex:1}
+.sec__sub{font-family:var(--jp);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+:root[lang="en"] .sec__sub{display:none}
 
 /* ---------- PROJECTS ---------- */
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,32px)}
-.card{
-  display:flex;flex-direction:column;background:var(--paper);
-  border:var(--bd);box-shadow:14px 14px 0 var(--ink);
-  transition:transform .14s ease,box-shadow .14s ease;
-}
-.card:hover{transform:translate(6px,6px);box-shadow:8px 8px 0 var(--ink)}
-.card__img{aspect-ratio:16/10;border-bottom:var(--bd);overflow:hidden;background:var(--ink)}
-.card__img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(1.05)}
-.card__band{
-  background:var(--red);border-bottom:var(--bd);
-  display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:14px 22px;
-}
-.card--cyan .card__band{background:var(--cyan)}
-.card__num{font-family:var(--display);font-size:clamp(44px,5vw,64px);line-height:.78;letter-spacing:-.05em}
-.card__kind{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;padding-bottom:8px}
-.card__body{display:flex;flex-direction:column;gap:14px;padding:clamp(20px,2.4vw,30px) clamp(18px,2.2vw,28px);flex:1}
-.card__body h3{font-family:var(--display);font-size:clamp(24px,3.2vw,38px);line-height:1.05;letter-spacing:-.02em;font-weight:400}
-.card__body p{font-family:var(--jp);font-size:clamp(13px,1.1vw,15px);line-height:2;color:var(--body)}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag{border:2px solid var(--ink);padding:6px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.1em}
-.card__go{
-  margin-top:auto;display:flex;align-items:center;justify-content:space-between;
-  min-height:56px;padding:0 22px;background:var(--ink);color:var(--paper);border:var(--bd);
-  font-family:var(--display);font-size:16px;letter-spacing:.06em;
-}
-.card:hover .card__go{background:var(--red);color:var(--ink)}
-.card--cyan:hover .card__go{background:var(--cyan)}
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3.4vw,48px)}
+.work__img{aspect-ratio:4/3;overflow:hidden;background:var(--off);border:1px solid var(--line)}
+.work__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04);transition:filter .4s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+.work:hover .work__img img{filter:grayscale(0);transform:scale(1.03)}
+.work__top{display:flex;align-items:baseline;gap:12px;margin-top:16px}
+.work__lot{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--muted)}
+.work__kind{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--muted);margin-left:auto}
+:root[lang="ja"] .work__kind,:root[lang="ko"] .work__kind{font-family:var(--jp);letter-spacing:.08em}
+.work h3{font-size:clamp(20px,2.4vw,28px);font-weight:600;letter-spacing:-.02em;margin-top:10px}
+.work h3 em{font-style:normal;color:var(--accent)}
+.work p{font-family:var(--jp);font-size:13px;line-height:2;color:var(--muted);margin-top:12px;max-width:46ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.meta span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--muted);border:1px solid var(--line);padding:5px 10px}
+.meta .is-award{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.work__go{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+:root[lang="ja"] .work__go,:root[lang="ko"] .work__go{font-family:var(--jp);letter-spacing:.08em}
+.work:hover .work__go{color:var(--accent);border-color:var(--accent)}
 
 /* ---------- STACK ---------- */
-.stack{
-  background-color:var(--ink);color:var(--paper);
-  background-image:radial-gradient(rgba(244,241,230,.16) 1.3px,transparent 1.4px);
-  background-size:16px 16px;
-  border-top:var(--bd);border-bottom:var(--bd);
-}
-.stack .sec__num{color:var(--acid)}
-.stack .sec__jp{color:#B9B1A3}
-.stack .sec__slash{background:repeating-linear-gradient(45deg,var(--paper) 0 8px,transparent 8px 16px)}
-.chips{display:flex;flex-wrap:wrap;gap:16px}
-.chip{border:3px solid var(--paper);padding:14px 24px;font-family:var(--display);font-size:clamp(16px,2vw,24px);letter-spacing:.02em}
-.chip--acid{background:var(--acid);color:var(--ink);border-color:var(--ink);box-shadow:6px 6px 0 var(--paper)}
-.chip--cyan{background:var(--cyan);color:var(--ink);border-color:var(--ink);box-shadow:6px 6px 0 var(--paper)}
-.stack p{font-family:var(--jp);font-size:clamp(13px,1.1vw,15px);line-height:2;color:#CFC7B8;max-width:720px;margin-top:22px}
+.stack{background:var(--off)}
+.stack__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.stack__item{display:flex;align-items:baseline;gap:14px;padding:20px 4px;border-bottom:1px solid var(--line)}
+.stack__no{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.stack__name{font-size:18px;font-weight:500;letter-spacing:-.01em}
+.stack p{font-family:var(--jp);font-size:13px;line-height:2.1;color:var(--muted);margin-top:28px;max-width:60ch}
 
 /* ---------- LINKS ---------- */
-.links{display:flex;flex-direction:column;border-top:var(--bd)}
-.links a{
-  display:flex;align-items:center;gap:20px;
-  min-height:88px;padding:12px 0;border-bottom:var(--bd);
-  transition:padding .18s ease,background .18s ease,color .18s ease;
-}
-.links a:hover{background:var(--ink);color:var(--paper);padding-inline:20px}
-.links__name{font-family:var(--display);font-size:clamp(20px,3.2vw,36px);letter-spacing:-.01em}
-.links__url{flex:1;font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--muted)}
-.links a:hover .links__url{color:#B9B1A3}
-.links__arrow{font-family:var(--display);font-size:clamp(20px,2.4vw,30px)}
+.links{border-top:1px solid var(--ink)}
+.links a{display:flex;align-items:center;gap:20px;min-height:78px;padding:10px 0;border-bottom:1px solid var(--line);transition:padding .24s cubic-bezier(.16,1,.3,1),color .24s ease}
+.links a:hover{padding-left:16px;color:var(--accent)}
+.links__name{font-size:clamp(17px,2.2vw,24px);font-weight:500;letter-spacing:-.01em}
+.links__url{flex:1;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.links__arrow{font-family:var(--mono);font-size:14px}
 
 /* ---------- FOOTER ---------- */
 .foot{background:var(--ink);color:var(--paper)}
-.foot__in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-block:clamp(32px,4vw,56px)}
-.foot__logo{font-family:var(--display);font-size:clamp(32px,4.4vw,52px);letter-spacing:-.03em}
-.foot__dot{width:16px;height:16px;border-radius:50%;background:var(--red)}
-.foot__txt{flex:1;min-width:240px;font-family:var(--jp);font-size:14px;line-height:1.9;color:#B9B1A3}
-.foot__meta{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:#B9B1A3;line-height:2;text-align:right}
+.foot__in{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-block:clamp(40px,5vw,72px)}
+.foot__logo{font-size:clamp(40px,6vw,76px);font-weight:700;letter-spacing:-.05em;line-height:.9}
+.foot__txt{flex:1;min-width:240px;font-family:var(--jp);font-size:12px;line-height:2;color:#9C9C96}
+.foot__meta{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#9C9C96;line-height:2.2;text-align:right}
 
 /* ---------- RESPONSIVE ---------- */
-@media (max-width:1080px){
-  .hero__in{grid-template-columns:1fr}
-  .hero__side{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:16px}
-  .checker{width:180px;height:180px}
-  .checker span{font-size:12px;padding:10px 14px}
-}
-@media (max-width:860px){
-  .nav__links{display:none}
-  .award__in{flex-wrap:wrap}
+@media (max-width:900px){
+  .hero__grid{grid-template-columns:1fr}
+  .works{grid-template-columns:1fr}
+  .stack__list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .award__in{flex-wrap:wrap;gap:20px}
   .award__jp{flex-basis:100%;order:3}
-  .award__link{order:2}
-  .cards{grid-template-columns:1fr}
-  .card{box-shadow:8px 8px 0 var(--ink)}
+  .nav__links{display:none}
   .links__url{display:none}
   .links__name{flex:1}
-  .links a{min-height:72px}
   .foot__meta{text-align:left}
 }
-@media (max-width:560px){
-  .hero__sub{flex-direction:column;align-items:flex-start;gap:10px}
-  .hero__rule{width:80px}
+@media (max-width:520px){
+  .stack__list{grid-template-columns:1fr}
   .cta{flex-direction:column;align-items:stretch}
-  .cta .btn{justify-content:space-between;box-shadow:5px 5px 0 var(--ink)}
-  .sticker{font-size:15px;padding:10px 16px}
-  .chip{font-size:15px;padding:10px 16px}
+  .btn{justify-content:space-between}
+  .spec__k{width:86px}
+  .lang button{padding:0 5px;letter-spacing:.1em}
+  .nav__in{gap:6px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -258,99 +173,93 @@ a{color:inherit;text-decoration:none}
 
 <header class="nav">
   <div class="wrap nav__in">
-    <span class="nav__logo">FOREG</span>
-    <span class="nav__dot" aria-hidden="true"></span>
-    <nav class="nav__links" aria-label="セクション">
-      <a href="#projects">01 PROJECTS</a>
-      <a href="#stack">02 STACK</a>
-      <a href="#links">03 LINKS</a>
+    <span class="mark">FOREG</span>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#projects">01 <span data-i18n="nav.projects">Projects</span></a>
+      <a href="#stack">02 <span data-i18n="nav.stack">Stack</span></a>
+      <a href="#links">03 <span data-i18n="nav.links">Links</span></a>
     </nav>
-    <a class="btn" href="https://foreg.base.shop/" target="_blank" rel="noopener">SHOP ↗</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang__sep" aria-hidden="true">/</span>
+      <button type="button" data-lang="ja" aria-pressed="false">JA</button><span class="lang__sep" aria-hidden="true">/</span>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button><span class="lang__sep" aria-hidden="true">/</span>
+      <button type="button" data-lang="ko" aria-pressed="false">KO</button>
+    </div>
+    <a class="nav__cta" href="https://foreg.base.shop/" target="_blank" rel="noopener" data-i18n="nav.shop">Shop</a>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <div class="wrap hero__in">
-      <div>
-        <p class="eyebrow">TOKYO / JAPAN — VINTAGE &amp; WEB APPS</p>
-        <h1>FOREG</h1>
-        <div class="hero__sub">
-          <span class="hero__rule" aria-hidden="true"></span>
-          <h2>VINTAGE CLOTHING × AI WEB APPS</h2>
-        </div>
-        <p>会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップと、APIを活用したWebアプリケーションの個人開発・自動化ツールの制作を行っています。</p>
-        <div class="cta">
-          <a class="btn" href="https://foreg.base.shop/" target="_blank" rel="noopener">SHOP VINTAGE ↗</a>
-          <a class="btn btn--cyan" href="https://the-bo.dev" target="_blank" rel="noopener">TRY THE BŌ ↗</a>
-        </div>
+    <div class="wrap">
+      <div class="hero__meta">
+        <span class="lbl" data-i18n="hero.loc">Tokyo / Japan</span>
+        <span class="lbl" data-i18n="hero.field">Vintage &amp; Web Apps</span>
+        <span class="lbl" data-i18n="hero.kind">Portfolio — 2026</span>
       </div>
-      <div class="hero__side">
-        <span class="sticker sticker--a">VINTAGE FOREG</span>
-        <span class="sticker sticker--b">AI THE BŌ</span>
-        <div class="checker"><span>EST. TOKYO<br>PERSONAL<br>PROJECTS</span></div>
-        <span class="hero__tag">古着とコードの個人商店</span>
+      <h1>FOREG<span class="hero__dot" aria-hidden="true"></span></h1>
+      <div class="hero__grid">
+        <div>
+          <h2 data-i18n-html="hero.h2">Vintage clothing &amp; AI web apps,<br>made by one person in Tokyo.</h2>
+          <p data-i18n="hero.body">Company employee, vintage shop owner, web app developer. Based in Tokyo, I run an online vintage clothing store and build web applications and automation tools with APIs on my own.</p>
+          <div class="cta">
+            <a class="btn btn--solid" href="https://foreg.base.shop/" target="_blank" rel="noopener"><span data-i18n="cta.shop">Shop Vintage</span> <span aria-hidden="true">↗</span></a>
+            <a class="btn" href="https://the-bo.dev" target="_blank" rel="noopener"><span data-i18n="cta.try">Try THE BŌ</span> <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="spec__row"><span class="spec__k" data-i18n="spec.k1">Based</span><span class="spec__v" data-i18n="spec.v1">Tokyo, Japan</span></div>
+          <div class="spec__row"><span class="spec__k" data-i18n="spec.k2">Work</span><span class="spec__v" data-i18n="spec.v2">Employee / vintage shop / web app development</span></div>
+          <div class="spec__row"><span class="spec__k" data-i18n="spec.k3">Focus</span><span class="spec__v" data-i18n="spec.v3">Solo projects built on API integration and automation</span></div>
+          <div class="spec__row"><span class="spec__k" data-i18n="spec.k4">Award</span><span class="spec__v" data-i18n="spec.v4">AI Festival Award — note “#AIで遊ぼう” contest</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="award" aria-labelledby="award-h">
     <div class="wrap award__in">
-      <span class="award__star" aria-hidden="true">★</span>
+      <div class="award__mark" aria-hidden="true">AWARD<br><span>★</span></div>
       <div>
-        <p class="award__eyebrow">note ×AIフェスティバル「#AIで遊ぼう」投稿コンテスト</p>
-        <h2 class="award__title" id="award-h">AI FESTIVAL AWARD</h2>
+        <p class="lbl" data-i18n="award.eyebrow">note × AI Festival — “#AIで遊ぼう” contest</p>
+        <h2 class="award__title" id="award-h">AI Festival Award</h2>
       </div>
-      <p class="award__jp">応募28,706件のうち、受賞2作品のひとつに<br>「THE BŌ」が選出されました。（2026年9月発表）</p>
-      <a class="award__link" href="https://note.com/info/n/n7dfd7537c462" target="_blank" rel="noopener">SEE ANNOUNCEMENT ↗</a>
+      <p class="award__jp" data-i18n="award.detail">Out of 28,706 entries, THE BŌ was chosen as one of only two winning works. (Announced September 2026)</p>
+      <a class="award__link" href="https://note.com/info/n/n7dfd7537c462" target="_blank" rel="noopener"><span data-i18n="award.link">Announcement</span> ↗</a>
     </div>
   </section>
 
   <div class="ticker">
     <div class="ticker__track">
-      <span>NOBODY CHANGED MY LIFE BUT ME ★ STARTED AT 40 ★ YOUNGEST I'LL EVER BE ★ HAVING THE MOST FUN ★ NOBODY CHANGED MY LIFE BUT ME ★ STARTED AT 40 ★ YOUNGEST I'LL EVER BE ★ HAVING THE MOST FUN ★</span>
-      <span aria-hidden="true">NOBODY CHANGED MY LIFE BUT ME ★ STARTED AT 40 ★ YOUNGEST I'LL EVER BE ★ HAVING THE MOST FUN ★ NOBODY CHANGED MY LIFE BUT ME ★ STARTED AT 40 ★ YOUNGEST I'LL EVER BE ★ HAVING THE MOST FUN ★</span>
+      <span data-i18n="ticker">Nobody changed my life but me — Started at 40 — Youngest I'll ever be — Having the most fun —</span>
+      <span data-i18n="ticker" aria-hidden="true">Nobody changed my life but me — Started at 40 — Youngest I'll ever be — Having the most fun —</span>
     </div>
   </div>
 
   <section class="sec" id="projects">
     <div class="wrap">
       <div class="sec__head">
-        <span class="sec__num">01</span>
-        <div>
-          <h2 class="sec__title">PROJECTS</h2>
-          <p class="sec__jp">プロジェクト</p>
-        </div>
-        <span class="sec__slash" aria-hidden="true"></span>
+        <span class="sec__no">01</span>
+        <h2 class="sec__title">Projects</h2>
+        <span class="sec__sub" data-i18n="nav.projects">Projects</span>
       </div>
-
-      <div class="cards">
-        <a class="card" href="https://foreg.base.shop/" target="_blank" rel="noopener">
-          <div class="card__img"><img src="143829-2.png" alt="FOREG のヴィンテージアイテム"></div>
-          <div class="card__band">
-            <span class="card__num">01</span>
-            <span class="card__kind">E-COMMERCE</span>
-          </div>
-          <div class="card__body">
-            <h3>VINTAGE<br>FOREG</h3>
-            <p>オンラインショップの運営。ヴィンテージアイテムの販売に加え、タグの歴史やディテール、ケア方法などについての発信も行っています。</p>
-            <div class="tags"><span class="tag">VINTAGE</span><span class="tag">BASE</span><span class="tag">CONTENT</span></div>
-            <span class="card__go"><span>VISIT SHOP</span><span>↗</span></span>
-          </div>
+      <div class="works">
+        <a class="work" href="https://foreg.base.shop/" target="_blank" rel="noopener">
+          <div class="work__img"><img src="143829-2.png" alt="Vintage pieces from FOREG"></div>
+          <div class="work__top"><span class="work__lot">Lot. 01</span><span class="work__kind" data-i18n="work1.kind">E-Commerce</span></div>
+          <h3>Vintage <em>FOREG</em></h3>
+          <p data-i18n="work1.desc">An online shop for vintage pieces. Alongside the store, I write about tag history, construction details and how to care for old garments.</p>
+          <div class="meta"><span data-i18n="work1.t1">Vintage</span><span>BASE</span><span data-i18n="work1.t3">Content</span></div>
+          <span class="work__go"><span data-i18n="work1.go">Visit Shop</span> ↗</span>
         </a>
 
-        <a class="card card--cyan" href="https://the-bo.dev" target="_blank" rel="noopener">
-          <div class="card__img"><img src="825EFFEC-A1D4-4ED6-91F8-5CB2AB46BEF1.jpeg" alt="THE BŌ が生成したデジタルカード"></div>
-          <div class="card__band">
-            <span class="card__num">02</span>
-            <span class="card__kind">AI WEB APP</span>
-          </div>
-          <div class="card__body">
-            <h3>THE BŌ<br>WEB APP</h3>
-            <p>AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。</p>
-            <div class="tags"><span class="chip-award">★ AI FESTIVAL AWARD</span><span class="tag">GEMINI API</span><span class="tag">FLASK</span><span class="tag">RENDER</span></div>
-            <span class="card__go"><span>OPEN APP</span><span>↗</span></span>
-          </div>
+        <a class="work" href="https://the-bo.dev" target="_blank" rel="noopener">
+          <div class="work__img"><img src="825EFFEC-A1D4-4ED6-91F8-5CB2AB46BEF1.jpeg" alt="A digital card generated by THE BŌ"></div>
+          <div class="work__top"><span class="work__lot">Lot. 02</span><span class="work__kind" data-i18n="work2.kind">AI Web App</span></div>
+          <h3>THE <em>BŌ</em> Web App</h3>
+          <p data-i18n="work2.desc">A web app that appraises a “stick” from a photo using AI image analysis and turns it into a digital card. Planned, built and deployed on my own.</p>
+          <div class="meta"><span class="is-award">★ AI Festival Award</span><span>Gemini API</span><span>Flask</span><span>Render</span></div>
+          <span class="work__go"><span data-i18n="work2.go">Open App</span> ↗</span>
         </a>
       </div>
     </div>
@@ -359,43 +268,37 @@ a{color:inherit;text-decoration:none}
   <section class="sec stack" id="stack">
     <div class="wrap">
       <div class="sec__head">
-        <span class="sec__num">02</span>
-        <div>
-          <h2 class="sec__title">TECH STACK</h2>
-          <p class="sec__jp">技術スタック</p>
-        </div>
-        <span class="sec__slash" aria-hidden="true"></span>
+        <span class="sec__no">02</span>
+        <h2 class="sec__title">Tech Stack</h2>
+        <span class="sec__sub" data-i18n="nav.stack">Stack</span>
       </div>
-      <div class="chips">
-        <span class="chip">Python</span>
-        <span class="chip">Flask</span>
-        <span class="chip chip--acid">Gemini API</span>
-        <span class="chip">GitHub</span>
-        <span class="chip chip--cyan">Render</span>
-        <span class="chip">Make</span>
+      <div class="stack__list">
+        <div class="stack__item"><span class="stack__no">01</span><span class="stack__name">Python</span></div>
+        <div class="stack__item"><span class="stack__no">02</span><span class="stack__name">Flask</span></div>
+        <div class="stack__item"><span class="stack__no">03</span><span class="stack__name">Gemini API</span></div>
+        <div class="stack__item"><span class="stack__no">04</span><span class="stack__name">GitHub</span></div>
+        <div class="stack__item"><span class="stack__no">05</span><span class="stack__name">Render</span></div>
+        <div class="stack__item"><span class="stack__no">06</span><span class="stack__name">Make</span></div>
       </div>
-      <p>企画・設計から実装、デプロイ、運用まで個人で完結させるための最小構成。API連携と自動化を軸に組み立てています。</p>
+      <p data-i18n="stack.note">A minimal setup I can run end to end on my own — planning, design, implementation, deployment and operation — built around API integration and automation.</p>
     </div>
   </section>
 
   <section class="sec" id="links">
     <div class="wrap">
       <div class="sec__head">
-        <span class="sec__num">03</span>
-        <div>
-          <h2 class="sec__title">LINKS</h2>
-          <p class="sec__jp">リンク</p>
-        </div>
-        <span class="sec__slash" aria-hidden="true"></span>
+        <span class="sec__no">03</span>
+        <h2 class="sec__title">Links</h2>
+        <span class="sec__sub" data-i18n="nav.links">Links</span>
       </div>
       <div class="links">
-        <a href="https://foreg.base.shop/" target="_blank" rel="noopener"><span class="links__name">SHOP (FOREG)</span><span class="links__url">foreg.base.shop</span><span class="links__arrow">↗</span></a>
-        <a href="https://the-bo.dev" target="_blank" rel="noopener"><span class="links__name">APP (THE BŌ)</span><span class="links__url">the-bo.dev</span><span class="links__arrow">↗</span></a>
-        <a href="https://note.com/foreg_lcr" target="_blank" rel="noopener"><span class="links__name">NOTE</span><span class="links__url">note.com/foreg_lcr</span><span class="links__arrow">↗</span></a>
-        <a href="https://note.com/info/n/n7dfd7537c462" target="_blank" rel="noopener"><span class="links__name">AWARD (note)</span><span class="links__url">「#AIで遊ぼう」受賞発表</span><span class="links__arrow">↗</span></a>
+        <a href="https://foreg.base.shop/" target="_blank" rel="noopener"><span class="links__name" data-i18n="links.shop">Shop (FOREG)</span><span class="links__url">foreg.base.shop</span><span class="links__arrow">↗</span></a>
+        <a href="https://the-bo.dev" target="_blank" rel="noopener"><span class="links__name" data-i18n="links.app">App (THE BŌ)</span><span class="links__url">the-bo.dev</span><span class="links__arrow">↗</span></a>
+        <a href="https://note.com/foreg_lcr" target="_blank" rel="noopener"><span class="links__name">note</span><span class="links__url">note.com/foreg_lcr</span><span class="links__arrow">↗</span></a>
+        <a href="https://note.com/info/n/n7dfd7537c462" target="_blank" rel="noopener"><span class="links__name" data-i18n="links.award">Award (note)</span><span class="links__url" data-i18n="links.award.sub">“#AIで遊ぼう” results</span><span class="links__arrow">↗</span></a>
         <!-- TODO: Threads の URL を入れる -->
-        <a href="#" target="_blank" rel="noopener"><span class="links__name">THREADS</span><span class="links__url">[YOUR THREADS URL]</span><span class="links__arrow">↗</span></a>
-        <a href="https://github.com/foreglcr-svg" target="_blank" rel="noopener"><span class="links__name">GITHUB</span><span class="links__url">github.com/foreglcr-svg</span><span class="links__arrow">↗</span></a>
+        <a href="#" target="_blank" rel="noopener"><span class="links__name">Threads</span><span class="links__url">[YOUR THREADS URL]</span><span class="links__arrow">↗</span></a>
+        <a href="https://github.com/foreglcr-svg" target="_blank" rel="noopener"><span class="links__name">GitHub</span><span class="links__url">github.com/foreglcr-svg</span><span class="links__arrow">↗</span></a>
       </div>
     </div>
   </section>
@@ -404,11 +307,159 @@ a{color:inherit;text-decoration:none}
 <footer class="foot">
   <div class="wrap foot__in">
     <span class="foot__logo">FOREG</span>
-    <span class="foot__dot" aria-hidden="true"></span>
-    <p class="foot__txt">会社員 / ヴィンテージショップ運営 / Webアプリ開発<br>東京を拠点に活動しています。</p>
-    <p class="foot__meta">© FOREG<br>TOKYO / JAPAN</p>
+    <p class="foot__txt" data-i18n-html="foot.txt">Employee / vintage shop owner / web app developer.<br>Based in Tokyo, Japan.</p>
+    <p class="foot__meta">© FOREG<br>Tokyo / Japan</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var DICT = {
+    en: {
+      "doc.title": "FOREG - Portfolio",
+      "doc.desc": "FOREG — vintage clothing and AI web apps, made by one person in Tokyo. Winner of the AI Festival Award at note's #AIで遊ぼう contest.",
+      "nav.projects": "Projects", "nav.stack": "Stack", "nav.links": "Links", "nav.shop": "Shop",
+      "hero.loc": "Tokyo / Japan", "hero.field": "Vintage & Web Apps", "hero.kind": "Portfolio — 2026",
+      "hero.h2": "Vintage clothing &amp; AI web apps,<br>made by one person in Tokyo.",
+      "hero.body": "Company employee, vintage shop owner, web app developer. Based in Tokyo, I run an online vintage clothing store and build web applications and automation tools with APIs on my own.",
+      "cta.shop": "Shop Vintage", "cta.try": "Try THE BŌ",
+      "spec.k1": "Based", "spec.v1": "Tokyo, Japan",
+      "spec.k2": "Work", "spec.v2": "Employee / vintage shop / web app development",
+      "spec.k3": "Focus", "spec.v3": "Solo projects built on API integration and automation",
+      "spec.k4": "Award", "spec.v4": "AI Festival Award — note “#AIで遊ぼう” contest",
+      "award.eyebrow": "note × AI Festival — “#AIで遊ぼう” contest",
+      "award.detail": "Out of 28,706 entries, THE BŌ was chosen as one of only two winning works. (Announced September 2026)",
+      "award.link": "Announcement",
+      "ticker": "Nobody changed my life but me — Started at 40 — Youngest I'll ever be — Having the most fun —",
+      "work1.kind": "E-Commerce",
+      "work1.desc": "An online shop for vintage pieces. Alongside the store, I write about tag history, construction details and how to care for old garments.",
+      "work1.t1": "Vintage", "work1.t3": "Content", "work1.go": "Visit Shop",
+      "work2.kind": "AI Web App",
+      "work2.desc": "A web app that appraises a “stick” from a photo using AI image analysis and turns it into a digital card. Planned, built and deployed on my own.",
+      "work2.go": "Open App",
+      "stack.note": "A minimal setup I can run end to end on my own — planning, design, implementation, deployment and operation — built around API integration and automation.",
+      "links.shop": "Shop (FOREG)", "links.app": "App (THE BŌ)", "links.award": "Award (note)", "links.award.sub": "“#AIで遊ぼう” results",
+      "foot.txt": "Employee / vintage shop owner / web app developer.<br>Based in Tokyo, Japan."
+    },
+    ja: {
+      "doc.title": "FOREG - ポートフォリオ",
+      "doc.desc": "FOREG — 会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップとAPIを活用した個人開発を行っています。note ×AIフェスティバル「#AIで遊ぼう」投稿コンテストでAIフェスティバル賞を受賞。",
+      "nav.projects": "プロジェクト", "nav.stack": "技術スタック", "nav.links": "リンク", "nav.shop": "ショップ",
+      "hero.loc": "東京 / 日本", "hero.field": "古着とWebアプリ", "hero.kind": "ポートフォリオ — 2026",
+      "hero.h2": "ヴィンテージ古着とAIのWebアプリを、<br>東京で、ひとりで作っています。",
+      "hero.body": "会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップと、APIを活用したWebアプリケーションの個人開発・自動化ツールの制作を行っています。",
+      "cta.shop": "ショップを見る", "cta.try": "THE BŌ を試す",
+      "spec.k1": "拠点", "spec.v1": "東京 / 日本",
+      "spec.k2": "活動", "spec.v2": "会社員 / ヴィンテージショップ運営 / Webアプリ開発",
+      "spec.k3": "領域", "spec.v3": "API連携と自動化を軸にした個人開発",
+      "spec.k4": "受賞", "spec.v4": "AIフェスティバル賞（note「#AIで遊ぼう」投稿コンテスト）",
+      "award.eyebrow": "note ×AIフェスティバル「#AIで遊ぼう」投稿コンテスト",
+      "award.detail": "応募28,706件のうち、受賞2作品のひとつに「THE BŌ」が選出されました。（2026年9月発表）",
+      "award.link": "受賞発表",
+      "ticker": "自分の人生を変えたのは自分 — 40代で始めた — 今がいちばん若い — 今がいちばん楽しい —",
+      "work1.kind": "Eコマース",
+      "work1.desc": "オンラインショップの運営。ヴィンテージアイテムの販売に加え、タグの歴史やディテール、ケア方法などについての発信も行っています。",
+      "work1.t1": "ヴィンテージ", "work1.t3": "発信", "work1.go": "ショップへ",
+      "work2.kind": "AI Webアプリ",
+      "work2.desc": "AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。",
+      "work2.go": "アプリを開く",
+      "stack.note": "企画・設計から実装、デプロイ、運用まで個人で完結させるための最小構成。API連携と自動化を軸に組み立てています。",
+      "links.shop": "ショップ（FOREG）", "links.app": "アプリ（THE BŌ）", "links.award": "受賞発表（note）", "links.award.sub": "「#AIで遊ぼう」受賞発表",
+      "foot.txt": "会社員 / ヴィンテージショップ運営 / Webアプリ開発<br>東京を拠点に活動しています。"
+    },
+    es: {
+      "doc.title": "FOREG - Portafolio",
+      "doc.desc": "FOREG — ropa vintage y apps web con IA, hechas por una sola persona en Tokio. Premio AI Festival en el concurso #AIで遊ぼう de note.",
+      "nav.projects": "Proyectos", "nav.stack": "Stack", "nav.links": "Enlaces", "nav.shop": "Tienda",
+      "hero.loc": "Tokio / Japón", "hero.field": "Vintage y apps web", "hero.kind": "Portafolio — 2026",
+      "hero.h2": "Ropa vintage y apps web con IA,<br>hechas por una sola persona en Tokio.",
+      "hero.body": "Empleado, dueño de una tienda vintage y desarrollador de apps web. Desde Tokio gestiono una tienda online de ropa vintage y desarrollo por mi cuenta aplicaciones web y herramientas de automatización con APIs.",
+      "cta.shop": "Ver la tienda", "cta.try": "Probar THE BŌ",
+      "spec.k1": "Base", "spec.v1": "Tokio, Japón",
+      "spec.k2": "Trabajo", "spec.v2": "Empleado / tienda vintage / desarrollo de apps web",
+      "spec.k3": "Enfoque", "spec.v3": "Proyectos propios basados en integración de APIs y automatización",
+      "spec.k4": "Premio", "spec.v4": "Premio AI Festival — concurso “#AIで遊ぼう” de note",
+      "award.eyebrow": "note × AI Festival — concurso “#AIで遊ぼう”",
+      "award.detail": "Entre 28.706 participaciones, THE BŌ fue una de las dos obras premiadas. (Anunciado en septiembre de 2026)",
+      "award.link": "Ver el anuncio",
+      "ticker": "Nadie cambió mi vida salvo yo — Empecé a los 40 — Hoy soy lo más joven que seré — Nunca me divertí tanto —",
+      "work1.kind": "Comercio electrónico",
+      "work1.desc": "Tienda online de piezas vintage. Además de la venta, publico sobre la historia de las etiquetas, los detalles de confección y el cuidado de las prendas.",
+      "work1.t1": "Vintage", "work1.t3": "Contenido", "work1.go": "Ir a la tienda",
+      "work2.kind": "App web con IA",
+      "work2.desc": "Una app web que tasa un “palo” a partir de una foto con análisis de imagen por IA y lo convierte en una carta digital. Diseño, desarrollo y despliegue en solitario.",
+      "work2.go": "Abrir la app",
+      "stack.note": "Una configuración mínima que puedo llevar yo solo: planificación, diseño, implementación, despliegue y operación. Todo gira en torno a la integración de APIs y la automatización.",
+      "links.shop": "Tienda (FOREG)", "links.app": "App (THE BŌ)", "links.award": "Premio (note)", "links.award.sub": "resultados de “#AIで遊ぼう”",
+      "foot.txt": "Empleado / tienda vintage / desarrollo de apps web.<br>Con base en Tokio, Japón."
+    },
+    ko: {
+      "doc.title": "FOREG - 포트폴리오",
+      "doc.desc": "FOREG — 도쿄에서 혼자 만드는 빈티지 의류와 AI 웹 앱. note 「#AIで遊ぼう」 공모전 AI 페스티벌상 수상.",
+      "nav.projects": "프로젝트", "nav.stack": "기술 스택", "nav.links": "링크", "nav.shop": "숍",
+      "hero.loc": "도쿄 / 일본", "hero.field": "빈티지 & 웹 앱", "hero.kind": "포트폴리오 — 2026",
+      "hero.h2": "빈티지 의류와 AI 웹 앱을,<br>도쿄에서 혼자 만들고 있습니다.",
+      "hero.body": "회사원 / 빈티지 숍 운영 / 웹 앱 개발. 도쿄를 거점으로 빈티지 의류 온라인 숍을 운영하면서, API를 활용한 웹 애플리케이션과 자동화 도구를 혼자 개발하고 있습니다.",
+      "cta.shop": "숍 보러 가기", "cta.try": "THE BŌ 사용해보기",
+      "spec.k1": "거점", "spec.v1": "일본 도쿄",
+      "spec.k2": "활동", "spec.v2": "회사원 / 빈티지 숍 운영 / 웹 앱 개발",
+      "spec.k3": "영역", "spec.v3": "API 연동과 자동화를 축으로 한 개인 개발",
+      "spec.k4": "수상", "spec.v4": "AI 페스티벌상 (note 「#AIで遊ぼう」 공모전)",
+      "award.eyebrow": "note × AI 페스티벌 「#AIで遊ぼう」 투고 콘테스트",
+      "award.detail": "28,706건의 응모 중 수상작 2편 가운데 하나로 「THE BŌ」가 선정되었습니다. (2026년 9월 발표)",
+      "award.link": "수상 발표",
+      "ticker": "내 인생을 바꾼 건 나 자신 — 마흔에 시작했다 — 오늘이 가장 젊다 — 지금이 가장 즐겁다 —",
+      "work1.kind": "이커머스",
+      "work1.desc": "빈티지 아이템을 판매하는 온라인 숍. 판매와 함께 택의 역사와 디테일, 관리 방법에 대한 콘텐츠도 발신하고 있습니다.",
+      "work1.t1": "빈티지", "work1.t3": "콘텐츠", "work1.go": "숍 방문",
+      "work2.kind": "AI 웹 앱",
+      "work2.desc": "AI 이미지 분석으로 「막대기」를 감정해 디지털 카드를 생성하는 웹 애플리케이션. 기획부터 개발, 배포까지 혼자 진행했습니다.",
+      "work2.go": "앱 열기",
+      "stack.note": "기획·설계부터 구현, 배포, 운영까지 혼자 완결할 수 있는 최소 구성. API 연동과 자동화를 축으로 만들었습니다.",
+      "links.shop": "숍 (FOREG)", "links.app": "앱 (THE BŌ)", "links.award": "수상 발표 (note)", "links.award.sub": "「#AIで遊ぼう」 수상 발표",
+      "foot.txt": "회사원 / 빈티지 숍 운영 / 웹 앱 개발<br>도쿄를 거점으로 활동하고 있습니다."
+    }
+  };
+
+  var STORE_KEY = "foreg.lang";
+  var DEFAULT = "en";
+
+  function apply(lang) {
+    var d = DICT[lang] || DICT[DEFAULT];
+    document.documentElement.setAttribute("lang", lang);
+    if (d["doc.title"]) { document.title = d["doc.title"]; }
+    var metas = document.querySelectorAll("[data-i18n-meta]");
+    for (var m = 0; m < metas.length; m++) {
+      var mk = metas[m].getAttribute("data-i18n-meta");
+      if (d[mk]) { metas[m].setAttribute("content", d[mk]); }
+    }
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute("data-i18n");
+      if (d[k]) { nodes[i].textContent = d[k]; }
+    }
+    var html = document.querySelectorAll("[data-i18n-html]");
+    for (var j = 0; j < html.length; j++) {
+      var hk = html[j].getAttribute("data-i18n-html");
+      if (d[hk]) { html[j].innerHTML = d[hk]; }
+    }
+    var btns = document.querySelectorAll(".lang button");
+    for (var b = 0; b < btns.length; b++) {
+      btns[b].setAttribute("aria-pressed", btns[b].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+    try { localStorage.setItem(STORE_KEY, lang); } catch (e) {}
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORE_KEY); } catch (e) {}
+  apply(DICT[saved] ? saved : DEFAULT);
+
+  document.querySelector(".lang").addEventListener("click", function (ev) {
+    var t = ev.target.closest("button[data-lang]");
+    if (t) { apply(t.getAttribute("data-lang")); }
+  });
+})();
+</script>
 
 </body>
 </html>
