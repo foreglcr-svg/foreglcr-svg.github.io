@@ -1,0 +1,40 @@
+name: Update shop screenshot
+
+on:
+  schedule:
+    - cron: "10 21 * * *"      # 毎日 06:10 JST (UTC 21:10)
+  workflow_dispatch:            # 手動実行もできる
+
+permissions:
+  contents: write
+
+jobs:
+  shot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
+        run: |
+          npm init -y > /dev/null
+          npm i -D playwright@^1
+          npx playwright install --with-deps chromium
+
+      - name: Take the screenshot
+        run: node .github/scripts/shop-shot.mjs
+
+      - name: Commit if it changed
+        run: |
+          if [ -n "$(git status --porcelain shop-latest.png)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add shop-latest.png
+            git commit -m "chore: refresh shop screenshot"
+            git push
+          else
+            echo "no visual change - nothing to commit"
+          fi
