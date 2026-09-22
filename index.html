@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOREG - Portfolio</title>
+<meta name="description" content="FOREG — 会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップとAPIを活用した個人開発を行っています。">
+<meta property="og:title" content="FOREG - Portfolio">
+<meta property="og:description" content="Vintage clothing × AI web apps. Tokyo / Japan.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="194126.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16130F;
+  --paper:#F4F1E6;
+  --red:#FF3D2E;
+  --cyan:#14B3C4;
+  --acid:#FFC93C;
+  --muted:#5E574D;
+  --body:#3A342C;
+  --display:'Archivo Black',system-ui,sans-serif;
+  --sans:'Archivo','Zen Kaku Gothic New',system-ui,sans-serif;
+  --jp:'Zen Kaku Gothic New',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  --bd:3px solid var(--ink);
+  --pad:clamp(20px,4vw,56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--mono)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);border-bottom:var(--bd);
+}
+.nav__in{display:flex;align-items:center;gap:clamp(12px,2vw,40px);height:72px}
+.nav__logo{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em}
+.nav__dot{width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid var(--ink);flex:none}
+.nav__links{display:flex;gap:28px;flex:1;font-family:var(--mono);font-size:12px;letter-spacing:.14em}
+.nav__links a:hover{color:var(--red)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:44px;padding:0 22px;border:var(--bd);background:var(--red);color:var(--ink);
+  font-family:var(--display);font-size:13px;letter-spacing:.08em;
+  box-shadow:4px 4px 0 var(--ink);
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding-block:clamp(32px,5vw,64px) clamp(40px,6vw,72px);
+  background-image:radial-gradient(var(--ink) 1.3px,transparent 1.4px);
+  background-size:14px 14px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(244,241,230,.88) 0%,rgba(244,241,230,.99) 62%);
+}
+.hero__in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:40px;align-items:start}
+.eyebrow{font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);letter-spacing:.22em}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(88px,16vw,236px);line-height:.82;letter-spacing:-.045em;
+  color:var(--paper);margin:.12em 0 0;
+  text-shadow:
+    .045em .045em 0 var(--red), .045em .045em 0 var(--ink),
+    -2px 0 0 var(--ink), 2px 0 0 var(--ink), 0 -2px 0 var(--ink), 0 2px 0 var(--ink);
+}
+.hero__sub{display:flex;align-items:center;gap:16px;margin-top:clamp(18px,2.4vw,26px)}
+.hero__rule{height:8px;width:120px;flex:none;background:repeating-linear-gradient(90deg,var(--ink) 0 12px,transparent 12px 20px)}
+.hero__sub h2{font-family:var(--display);font-size:clamp(19px,3vw,34px);letter-spacing:-.01em;line-height:1.15;font-weight:400}
+.hero p{font-family:var(--jp);font-size:clamp(14px,1.2vw,16px);line-height:2.05;color:var(--body);max-width:620px;margin-top:18px}
+.cta{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px}
+.cta .btn{min-height:64px;padding:0 34px;font-size:clamp(15px,1.4vw,18px);box-shadow:8px 8px 0 var(--ink)}
+.cta .btn:hover{box-shadow:4px 4px 0 var(--ink)}
+.cta .btn--cyan{background:var(--cyan)}
+.hero__side{display:flex;flex-direction:column;align-items:flex-end;gap:26px;padding-top:14px}
+.sticker{
+  background:var(--acid);border:var(--bd);box-shadow:6px 6px 0 var(--ink);
+  padding:14px 24px;font-family:var(--display);font-size:20px;letter-spacing:.02em;
+}
+.sticker--a{transform:rotate(6deg)}
+.sticker--b{transform:rotate(-5deg);background:var(--cyan)}
+.checker{
+  transform:rotate(3deg);width:250px;height:250px;flex:none;
+  border:var(--bd);box-shadow:8px 8px 0 var(--ink);
+  background-color:var(--paper);
+  background-image:repeating-conic-gradient(var(--ink) 0% 25%,var(--paper) 0% 50%);
+  background-size:50px 50px;
+  display:grid;place-items:center;
+}
+.checker span{
+  background:var(--paper);border:var(--bd);padding:12px 18px;
+  font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.16em;
+  text-align:center;line-height:1.7;
+}
+.hero__tag{align-self:flex-start;transform:rotate(-2deg);font-family:var(--jp);font-weight:700;font-size:14px;border-bottom:3px solid var(--red);padding-bottom:4px}
+
+/* ---------- TICKER ---------- */
+.ticker{
+  background:var(--ink);color:var(--acid);
+  border-top:var(--bd);border-bottom:var(--bd);
+  overflow:hidden;display:flex;align-items:center;height:clamp(56px,7vw,72px);
+}
+.ticker__track{display:flex;flex:none;width:max-content;animation:slide 32s linear infinite}
+.ticker__track span{
+  font-family:var(--display);font-size:clamp(16px,2vw,22px);letter-spacing:.1em;
+  white-space:nowrap;padding-right:1.2em;
+}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+.sec{padding-block:clamp(40px,6vw,64px)}
+.sec__head{display:flex;align-items:flex-end;gap:clamp(14px,2vw,24px);margin-bottom:clamp(24px,3vw,36px)}
+.sec__num{font-family:var(--display);font-size:clamp(52px,8vw,96px);line-height:.8;letter-spacing:-.04em;color:var(--red)}
+.sec__title{font-family:var(--display);font-size:clamp(24px,4vw,44px);letter-spacing:-.01em;line-height:1;font-weight:400}
+.sec__jp{font-family:var(--jp);font-size:clamp(11px,1.1vw,14px);color:var(--muted);letter-spacing:.1em;margin-top:6px}
+.sec__slash{flex:1;height:10px;margin-bottom:16px;background:repeating-linear-gradient(45deg,var(--ink) 0 8px,transparent 8px 16px)}
+
+/* ---------- PROJECTS ---------- */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,32px)}
+.card{
+  display:flex;flex-direction:column;background:var(--paper);
+  border:var(--bd);box-shadow:14px 14px 0 var(--ink);
+  transition:transform .14s ease,box-shadow .14s ease;
+}
+.card:hover{transform:translate(6px,6px);box-shadow:8px 8px 0 var(--ink)}
+.card__img{aspect-ratio:16/10;border-bottom:var(--bd);overflow:hidden;background:var(--ink)}
+.card__img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(1.05)}
+.card__band{
+  background:var(--red);border-bottom:var(--bd);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:14px 22px;
+}
+.card--cyan .card__band{background:var(--cyan)}
+.card__num{font-family:var(--display);font-size:clamp(44px,5vw,64px);line-height:.78;letter-spacing:-.05em}
+.card__kind{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;padding-bottom:8px}
+.card__body{display:flex;flex-direction:column;gap:14px;padding:clamp(20px,2.4vw,30px) clamp(18px,2.2vw,28px);flex:1}
+.card__body h3{font-family:var(--display);font-size:clamp(24px,3.2vw,38px);line-height:1.05;letter-spacing:-.02em;font-weight:400}
+.card__body p{font-family:var(--jp);font-size:clamp(13px,1.1vw,15px);line-height:2;color:var(--body)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{border:2px solid var(--ink);padding:6px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+.card__go{
+  margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+  min-height:56px;padding:0 22px;background:var(--ink);color:var(--paper);border:var(--bd);
+  font-family:var(--display);font-size:16px;letter-spacing:.06em;
+}
+.card:hover .card__go{background:var(--red);color:var(--ink)}
+.card--cyan:hover .card__go{background:var(--cyan)}
+
+/* ---------- STACK ---------- */
+.stack{
+  background-color:var(--ink);color:var(--paper);
+  background-image:radial-gradient(rgba(244,241,230,.16) 1.3px,transparent 1.4px);
+  background-size:16px 16px;
+  border-top:var(--bd);border-bottom:var(--bd);
+}
+.stack .sec__num{color:var(--acid)}
+.stack .sec__jp{color:#B9B1A3}
+.stack .sec__slash{background:repeating-linear-gradient(45deg,var(--paper) 0 8px,transparent 8px 16px)}
+.chips{display:flex;flex-wrap:wrap;gap:16px}
+.chip{border:3px solid var(--paper);padding:14px 24px;font-family:var(--display);font-size:clamp(16px,2vw,24px);letter-spacing:.02em}
+.chip--acid{background:var(--acid);color:var(--ink);border-color:var(--ink);box-shadow:6px 6px 0 var(--paper)}
+.chip--cyan{background:var(--cyan);color:var(--ink);border-color:var(--ink);box-shadow:6px 6px 0 var(--paper)}
+.stack p{font-family:var(--jp);font-size:clamp(13px,1.1vw,15px);line-height:2;color:#CFC7B8;max-width:720px;margin-top:22px}
+
+/* ---------- LINKS ---------- */
+.links{display:flex;flex-direction:column;border-top:var(--bd)}
+.links a{
+  display:flex;align-items:center;gap:20px;
+  min-height:88px;padding:12px 0;border-bottom:var(--bd);
+  transition:padding .18s ease,background .18s ease,color .18s ease;
+}
+.links a:hover{background:var(--ink);color:var(--paper);padding-inline:20px}
+.links__name{font-family:var(--display);font-size:clamp(20px,3.2vw,36px);letter-spacing:-.01em}
+.links__url{flex:1;font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--muted)}
+.links a:hover .links__url{color:#B9B1A3}
+.links__arrow{font-family:var(--display);font-size:clamp(20px,2.4vw,30px)}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--ink);color:var(--paper)}
+.foot__in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-block:clamp(32px,4vw,56px)}
+.foot__logo{font-family:var(--display);font-size:clamp(32px,4.4vw,52px);letter-spacing:-.03em}
+.foot__dot{width:16px;height:16px;border-radius:50%;background:var(--red)}
+.foot__txt{flex:1;min-width:240px;font-family:var(--jp);font-size:14px;line-height:1.9;color:#B9B1A3}
+.foot__meta{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:#B9B1A3;line-height:2;text-align:right}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1080px){
+  .hero__in{grid-template-columns:1fr}
+  .hero__side{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:16px}
+  .checker{width:180px;height:180px}
+  .checker span{font-size:12px;padding:10px 14px}
+}
+@media (max-width:860px){
+  .nav__links{display:none}
+  .cards{grid-template-columns:1fr}
+  .card{box-shadow:8px 8px 0 var(--ink)}
+  .links__url{display:none}
+  .links__name{flex:1}
+  .links a{min-height:72px}
+  .foot__meta{text-align:left}
+}
+@media (max-width:560px){
+  .hero__sub{flex-direction:column;align-items:flex-start;gap:10px}
+  .hero__rule{width:80px}
+  .cta{flex-direction:column;align-items:stretch}
+  .cta .btn{justify-content:space-between;box-shadow:5px 5px 0 var(--ink)}
+  .sticker{font-size:15px;padding:10px 16px}
+  .chip{font-size:15px;padding:10px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <span class="nav__logo">FOREG</span>
+    <span class="nav__dot" aria-hidden="true"></span>
+    <nav class="nav__links" aria-label="セクション">
+      <a href="#projects">01 PROJECTS</a>
+      <a href="#stack">02 STACK</a>
+      <a href="#links">03 LINKS</a>
+    </nav>
+    <a class="btn" href="https://foreg.base.shop/" target="_blank" rel="noopener">SHOP ↗</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div>
+        <p class="eyebrow">TOKYO / JAPAN — VINTAGE &amp; WEB APPS</p>
+        <h1>FOREG</h1>
+        <div class="hero__sub">
+          <span class="hero__rule" aria-hidden="true"></span>
+          <h2>VINTAGE CLOTHING × AI WEB APPS</h2>
+        </div>
+        <p>会社員 / ヴィンテージショップ運営 / Webアプリ開発。東京を拠点に、ヴィンテージ古着のオンラインショップと、APIを活用したWebアプリケーションの個人開発・自動化ツールの制作を行っています。</p>
+        <div class="cta">
+          <a class="btn" href="https://foreg.base.shop/" target="_blank" rel="noopener">SHOP VINTAGE ↗</a>
+          <a class="btn btn--cyan" href="https://the-bo.dev" target="_blank" rel="noopener">TRY THE BŌ ↗</a>
+        </div>
+      </div>
+      <div class="hero__side">
+        <span class="sticker sticker--a">VINTAGE FOREG</span>
+        <span class="sticker sticker--b">AI THE BŌ</span>
+        <div class="checker"><span>EST. TOKYO<br>PERSONAL<br>PROJECTS</span></div>
+        <span class="hero__tag">古着とコードの個人商店</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>VINTAGE FOREG ★ AI THE BŌ ★ TOKYO ★ PYTHON ★ GEMINI API ★ VINTAGE FOREG ★ AI THE BŌ ★ TOKYO ★ PYTHON ★ GEMINI API ★</span>
+      <span>VINTAGE FOREG ★ AI THE BŌ ★ TOKYO ★ PYTHON ★ GEMINI API ★ VINTAGE FOREG ★ AI THE BŌ ★ TOKYO ★ PYTHON ★ GEMINI API ★</span>
+    </div>
+  </div>
+
+  <section class="sec" id="projects">
+    <div class="wrap">
+      <div class="sec__head">
+        <span class="sec__num">01</span>
+        <div>
+          <h2 class="sec__title">PROJECTS</h2>
+          <p class="sec__jp">プロジェクト</p>
+        </div>
+        <span class="sec__slash" aria-hidden="true"></span>
+      </div>
+
+      <div class="cards">
+        <a class="card" href="https://foreg.base.shop/" target="_blank" rel="noopener">
+          <div class="card__img"><img src="194126.png" alt="FOREG のヴィンテージアイテム"></div>
+          <div class="card__band">
+            <span class="card__num">01</span>
+            <span class="card__kind">E-COMMERCE</span>
+          </div>
+          <div class="card__body">
+            <h3>VINTAGE<br>FOREG</h3>
+            <p>オンラインショップの運営。ヴィンテージアイテムの販売に加え、タグの歴史やディテール、ケア方法などについての発信も行っています。</p>
+            <div class="tags"><span class="tag">VINTAGE</span><span class="tag">BASE</span><span class="tag">CONTENT</span></div>
+            <span class="card__go"><span>VISIT SHOP</span><span>↗</span></span>
+          </div>
+        </a>
+
+        <a class="card card--cyan" href="https://the-bo.dev" target="_blank" rel="noopener">
+          <div class="card__img"><img src="825EFFEC-A1D4-4ED6-91F8-5CB2AB46BEF1.jpeg" alt="THE BŌ が生成したデジタルカード"></div>
+          <div class="card__band">
+            <span class="card__num">02</span>
+            <span class="card__kind">AI WEB APP</span>
+          </div>
+          <div class="card__body">
+            <h3>THE BŌ<br>WEB APP</h3>
+            <p>AI画像解析を用いて「棒」を鑑定し、デジタルカードを生成するWebアプリケーション。企画から開発、デプロイまで個人で行っています。</p>
+            <div class="tags"><span class="tag">GEMINI API</span><span class="tag">FLASK</span><span class="tag">RENDER</span></div>
+            <span class="card__go"><span>OPEN APP</span><span>↗</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec stack" id="stack">
+    <div class="wrap">
+      <div class="sec__head">
+        <span class="sec__num">02</span>
+        <div>
+          <h2 class="sec__title">TECH STACK</h2>
+          <p class="sec__jp">技術スタック</p>
+        </div>
+        <span class="sec__slash" aria-hidden="true"></span>
+      </div>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">Flask</span>
+        <span class="chip chip--acid">Gemini API</span>
+        <span class="chip">GitHub</span>
+        <span class="chip chip--cyan">Render</span>
+        <span class="chip">Make</span>
+      </div>
+      <p>企画・設計から実装、デプロイ、運用まで個人で完結させるための最小構成。API連携と自動化を軸に組み立てています。</p>
+    </div>
+  </section>
+
+  <section class="sec" id="links">
+    <div class="wrap">
+      <div class="sec__head">
+        <span class="sec__num">03</span>
+        <div>
+          <h2 class="sec__title">LINKS</h2>
+          <p class="sec__jp">リンク</p>
+        </div>
+        <span class="sec__slash" aria-hidden="true"></span>
+      </div>
+      <div class="links">
+        <a href="https://foreg.base.shop/" target="_blank" rel="noopener"><span class="links__name">SHOP (FOREG)</span><span class="links__url">foreg.base.shop</span><span class="links__arrow">↗</span></a>
+        <a href="https://the-bo.dev" target="_blank" rel="noopener"><span class="links__name">APP (THE BŌ)</span><span class="links__url">the-bo.dev</span><span class="links__arrow">↗</span></a>
+        <a href="https://note.com/foreg_lcr" target="_blank" rel="noopener"><span class="links__name">NOTE</span><span class="links__url">note.com/foreg_lcr</span><span class="links__arrow">↗</span></a>
+        <!-- TODO: Threads の URL を入れる -->
+        <a href="#" target="_blank" rel="noopener"><span class="links__name">THREADS</span><span class="links__url">[YOUR THREADS URL]</span><span class="links__arrow">↗</span></a>
+        <a href="https://github.com/foreglcr-svg" target="_blank" rel="noopener"><span class="links__name">GITHUB</span><span class="links__url">github.com/foreglcr-svg</span><span class="links__arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span class="foot__logo">FOREG</span>
+    <span class="foot__dot" aria-hidden="true"></span>
+    <p class="foot__txt">会社員 / ヴィンテージショップ運営 / Webアプリ開発<br>東京を拠点に活動しています。</p>
+    <p class="foot__meta">© FOREG<br>TOKYO / JAPAN</p>
+  </div>
+</footer>
+
+</body>
+</html>
