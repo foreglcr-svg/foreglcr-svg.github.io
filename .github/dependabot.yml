@@ -1,0 +1,12 @@
+# 依存パッケージの更新を週1回確認し、更新があればPRを立てる（セキュリティ強化PJ 2026-11-22）。
+# マージ（＝本番反映）は人が判断する。
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
